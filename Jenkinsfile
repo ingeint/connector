@@ -14,8 +14,8 @@ pipeline {
                 sh 'cp /var/jenkins_home/.ssh/id_rsa* /root/.ssh/'
                 sh 'docker exec -u root $CONTAINER rm -rf $ADDON_PATH'
                 sh 'git clone $PROJECT_URL -b $BRANCH'
-                sh 'docker cp  $PROJECT_NAME $CONTAINER:$ADDON_PATH'
-                sh 'rm -R $PROJECT_NAME'
+                sh 'docker cp ${PROJECT_NAME} $CONTAINER:$ADDON_PATH'
+                sh 'rm -R ${PROJECT_NAME}'
             }
         }
         stage('Update DB') {
